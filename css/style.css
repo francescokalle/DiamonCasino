@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Futura';  /* Nome che userai nel resto del CSS */
+    src: url('../resources/fonts/futur.ttf') format('truetype');  /* Usa il formato truetype */
+    font-weight: normal;
+    font-style: normal;
+}
+
+.row-container{
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    align-items: center;
+    
+}
+
+#header-container{
+    margin-left: .87vw;
+    padding-top: 1.2vh;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    align-items: baseline;
+}
+
+.navbar-button {
+    width: fit-content;        /* La larghezza si adatta al contenuto */
+    height: 4vh;               /* Altezza fissa */
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-width: 0;
+
+    font-family: 'Futura', sans-serif;    /* Font Futura */
+    font-size: large;
+    font-weight: 400;
+
+    position: relative;        /* Posiziona il bottone in modo che il bordo si posizioni correttamente sopra */
+    overflow: hidden;          /* Nasconde il bordo che esce oltre il bottone */
+    display: inline-block;     /* Fa in modo che il bottone si adatti al contenuto */
+    
+    padding-left: 1rem;        /* Aggiungi margine a sinistra per il testo */
+    padding-right: 1rem;       /* Aggiungi margine a destra per il testo */
+}
+
+.navbar-button::before {
+    content: '';               /* Crea un elemento pseudo */
+    position: absolute;        /* Usa posizione assoluta per posizionarlo sopra il bottone */
+    top: 0;                    /* Posiziona il bordo in alto, sopra il bottone */
+    left: 50%;                 /* Inizia dal centro */
+    transform: translateX(-50%); /* Centra il bordo rispetto al bottone */
+    width: 0;                  /* Larghezza iniziale del bordo (0px) */
+    height: .3vh;               /* Altezza del bordo (puoi regolare questo valore) */
+    background-color: white;  /* Colore del bordo */
+    transition: width 0.3s ease-in-out; /* Transizione fluida per l'espansione */
+    z-index: 1;                /* Assicura che il bordo stia sopra il bottone */
+}
+
+.navbar-button:hover::before {
+    width: 100%;               /* Larghezza completa quando hover */
+}
+
+.active{
+    background-color: #7d05b1;
+}
+
+.active::before {
+    content: '';               /* Crea un elemento pseudo */
+    position: absolute;        /* Usa posizione assoluta per posizionarlo sopra il bottone */
+    top: 0;                    /* Posiziona il bordo in alto, sopra il bottone */
+    left: 50%;                 /* Inizia dal centro */
+    transform: translateX(-50%); /* Centra il bordo rispetto al bottone */
+    width: 100%;                  /* Larghezza iniziale del bordo (0px) */
+    height: .3vh;               /* Altezza del bordo (puoi regolare questo valore) */
+    background-color: white;  /* Colore del bordo */
+    z-index: 1;                /* Assicura che il bordo stia sopra il bottone */
+}
