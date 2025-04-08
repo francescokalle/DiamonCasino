@@ -16,15 +16,45 @@
 
         <div id="navbar"></div>
     </div>
-
-    <div class="popoular-games-container">
-        <button class="popgame-button" id="1-popgame-button">HOME</button>
-        <button class="popgame-button" id="1-popgame-button">HOME</button>
-        <button class="popgame-button" id="1-popgame-button">HOME</button>
+    <div class="section-1">
+            <img src="https://picsum.photos/960/540" alt="" id="game-thumbnail">
     </div>
+
+
 
     <div id="gradient-box"></div>
 
     <script src="js/navabar.js"></script>
+    <script>
+        const img = document.getElementById("game-thumbnail");
+
+        // Genera un offset casuale di partenza
+        const randomOffsetX = Math.random() * 40 - 20; // tra -20 e 20 gradi
+        const randomOffsetY = Math.random() * 40 - 20; // tra -20 e 20 gradi
+
+        // Imposta la rotazione iniziale dell'immagine con l'offset casuale
+        img.style.transform = `rotateX(${randomOffsetX}deg) rotateY(${randomOffsetY}deg)`;
+
+        // Aggiungi l'evento per il movimento del mouse
+        document.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        // Calcola la differenza tra il mouse e il centro della finestra
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
+
+        // Applica l'offset random e ruota l'immagine verso il cursore
+        const rotateY = randomOffsetY + deltaX * 2;  // La rotazione sull'asse Y
+        const rotateX = randomOffsetX - deltaY * 2;  // La rotazione sull'asse X
+
+        // Modifica la trasformazione dell'immagine per seguire il mouse
+        img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+    </script>
 </body>
 </html>
