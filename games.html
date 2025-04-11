@@ -48,8 +48,8 @@
         const deltaY = (y - centerY) / centerY;
 
         // Applica l'offset random e ruota l'immagine verso il cursore
-        const rotateY = randomOffsetY + deltaX * 2;  // La rotazione sull'asse Y
-        const rotateX = randomOffsetX - deltaY * 2;  // La rotazione sull'asse X
+        const rotateY = deltaX * 2;  // La rotazione sull'asse Y
+        const rotateX = deltaY * 2;  // La rotazione sull'asse X
 
         // Modifica la trasformazione dell'immagine per seguire il mouse
         img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
