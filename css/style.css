@@ -41,11 +41,11 @@ body {
 
 
 .row-container{
+    width: 100vw;
     display: flex;
     flex-direction: row;
     flex-flow: row;
     align-items: center;
-    
 }
 
 #header-container{
@@ -71,6 +71,7 @@ body {
     font-family: 'gta-bold';    /* Font Futura */
     font-size: 20pt;
     font-weight: 400;
+    text-align: center;
 
     position: relative;        /* Posiziona il bottone in modo che il bordo si posizioni correttamente sopra */
     overflow: hidden;          /* Nasconde il bordo che esce oltre il bottone */
@@ -111,4 +112,16 @@ body {
     height: .3vh;               /* Altezza del bordo (puoi regolare questo valore) */
     background-color: white;  /* Colore del bordo */
     z-index: 1;                /* Assicura che il bordo stia sopra il bottone */
+}
+
+#navbar-button-user{
+    margin-left: 1vw;
+    border-radius: 50%;
+    width: 2.25vw;
+    height: 4vh;
+}
+
+.fish-info{
+    font-family: "gta-bold";
+    font-size: 30pt;
 }

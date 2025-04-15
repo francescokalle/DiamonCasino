@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+<body>
+
+    <!-- Overlay nero gestito da CSS globale -->
+
+    <!-- Gradient box a sinistra -->
+    <div id="gradient-box"></div>
+
+    <!-- Form di login -->
+    <div class="container">
+        <div class="login-container">
+            <h2 class="login-title">Accedi o Registrati</h2>
+            <form class="login-form">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <div id="login-actions">
+                    <button id="new-account-button" type="button">Registrati</button>
+                    <button id="login-button" type="submit">Entra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/login.js" defer></script>
+
+</body>
+</html>
