@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Diamond Casino - Account</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/account.css">
+</head>
+<body>
+    <div class="row-container" id="header-container">
+        <img src="resources/images/logo.png" alt="" id="logo">
+        <div id="navbar"></div>
+    </div>
+    <div id="gradient-box"></div>
+
+    <div class="account-container">
+        <div class="account-header">
+            <h1>GESTIONE ACCOUNT</h1>
+            <div class="account-balance">
+                <span id="user-fish">0</span> fish
+            </div>
+        </div>
+
+        <div class="account-section">
+            <h2>IMPOSTAZIONI</h2>
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <h3>Cambia Password</h3>
+                    <form id="change-password-form">
+                        <input type="password" placeholder="Vecchia Password" required minlength="2">
+                        <input type="password" placeholder="Nuova Password" required minlength="2">
+                        <input type="password" placeholder="Conferma Nuova Password" required minlength="2">
+                        <button type="submit">AGGIORNA</button>
+                        <div id="password-message" style="margin-top: 10px; display: none;"></div>
+                    </form>
+                </div>
+                
+                <div class="setting-item">
+                    <h3>Storico Transazioni</h3>
+                    <button onclick="location.href='transactions.html'">VISUALIZZA</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="account-section">
+            <h2>STATISTICHE</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">Partite Giocate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">Fish Vinti</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">Fish Persi</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="logout-section">
+            <button onclick="location.href='php/logout.php'">LOGOUT</button>
+        </div>
+    </div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>

@@ -1,3 +1,5 @@
+// navbar.js - Versione semplificata con redirect diretto ad account.html
+
 fetch('../prefab/navbar.html')
   .then(response => response.text())
   .then(data => {
@@ -8,7 +10,6 @@ fetch('../prefab/navbar.html')
 
     contenitore.replaceWith(nuovoContenuto);
 
-    // Attendi un frame per assicurarti che il DOM sia aggiornato
     const navbarButtonsReady = () => new Promise(resolve => {
       requestAnimationFrame(() => {
         resolve();
@@ -16,7 +17,6 @@ fetch('../prefab/navbar.html')
     });
 
     navbarButtonsReady().then(() => {
-      // Recupera i bottoni dopo che la navbar è stata inserita
       const buttonHome = document.getElementById('navbar-button-home');
       const buttonGames = document.getElementById('navbar-button-games');
       const buttonMarket = document.getElementById('navbar-button-market');
@@ -32,21 +32,22 @@ fetch('../prefab/navbar.html')
         .then(res => res.json())
         .then(data => {
           if (data.loggedIn) {
+            // Utente loggato - cambia testo e comportamento
             buttonUser.textContent = data.username;
             buttonUser.classList.add('logged-in');
 
-            // Crea e aggiungi scritta "X fish" a sinistra
+            // Aggiungi display fish
             const fishDisplay = document.createElement('span');
             fishDisplay.textContent = `${data.fish} fish`;
             fishDisplay.classList.add('fish-info');
             buttonUser.parentElement.insertBefore(fishDisplay, buttonUser);
 
-            // Reindirizza al profilo
+            // Reindirizza a account.html al click
             buttonUser.addEventListener('click', () => {
-              window.location.href = 'profile.html';
+              window.location.href = 'account.html';
             });
           } else {
-            // Non loggato: vai al login
+            // Utente non loggato - comportamento normale
             buttonUser.addEventListener('click', () => {
               window.location.href = 'login.html';
             });
@@ -56,8 +57,9 @@ fetch('../prefab/navbar.html')
       // Funzione per impostare il bottone attivo in base all'URL
       function setActiveButton() {
         const path = window.location.pathname;
+        const currentPage = path.split('/').pop();
 
-        if (path.includes('index.html')) {
+        if (path.includes('index.html') || currentPage === '') {
           buttonHome.classList.add('active');
           buttonGames.classList.remove('active');
           buttonMarket.classList.remove('active');

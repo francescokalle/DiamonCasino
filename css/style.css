@@ -30,13 +30,16 @@ body {
 
 #gradient-box {
     background: linear-gradient(90deg, #000 0, rgba(126, 5, 177, .5) 50%, transparent);
-    margin: 0 auto;
-    position: absolute;
+    position: fixed; /* Cambia da absolute a fixed */
     top: 0;
+    bottom: 0; /* Estende fino al fondo */
+    left: 30%; /* Centra orizzontalmente */
+    transform: translateX(-50%); /* Centra perfettamente */
     z-index: -10;
-    height: 100%;
     width: 60%;
     min-width: 600px;
+    height: 100%; /* Occupa tutta l'altezza della pagina */
+    min-height: 100vh; /* Fallback per browser meno recenti */
 }
 
 
@@ -116,8 +119,8 @@ body {
 
 #navbar-button-user{
     margin-left: 1vw;
-    border-radius: 50%;
-    width: 2.25vw;
+    max-width: fit-content;
+    min-width: 2.25vw;
     height: 4vh;
 }
 
