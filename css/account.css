@@ -1,148 +1,260 @@
 /* Stili specifici per la pagina account - Non modificano gli stili esistenti */
 
 .account-container {
-    width: 80%;
+    width: 90vw;
     max-width: 1200px;
     margin-top: 1vh;
     margin-left: 50vw;
     transform: translateX(-50%);
-    padding:  2rem;
+    padding: 2vh 2vw;
     background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid #7d05b1;
-    box-shadow: 0 0 20px rgba(125, 5, 177, 0.5);
+    backdrop-filter: blur(10px);
     color: white;
     font-family: 'gta';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-container > * {
+    width: 100%;
 }
 
 .account-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #7d05b1;
+    margin-bottom: 2vh;
+    padding-bottom: 1vh;
+    width: 100%;
 }
 
 .account-header h1 {
     font-family: 'gta-bold';
-    font-size: 2.5rem;
-    margin: 0;
+    font-size: 3.5vh;
     color: white;
-    text-shadow: 0 0 10px rgba(125, 5, 177, 0.8);
+    margin-bottom: 1.5vh;
 }
 
 .account-balance {
     font-family: 'gta-bold';
-    font-size: 2rem;
+    font-size: 2.5vh;
     color: #f1c40f;
 }
 
 .account-balance span {
-    font-size: 2.5rem;
+    font-size: 3vh;
 }
 
 .account-section {
-    margin-bottom: 2rem;
+    margin-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.account-section > * {
+    width: 100%;
 }
 
 .account-section h2 {
+    width: fit-content;
     font-family: 'gta-bold';
-    color: #7d05b1;
-    border-bottom: 1px solid #7d05b1;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.8vh;
+    color: white;
+    margin-bottom: 1.5vh;
+    text-align: center;
 }
 
 .settings-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2vh;
+    width: 100%;
 }
 
 .setting-item {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 1.5rem;
-    border: 1px solid #333;
-    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .setting-item h3 {
     font-family: 'gta-bold';
-    margin-top: 0;
+    font-size: 2.5vh;
     color: white;
+    margin-bottom: 1.5vh;
+}
+
+#change-password-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .setting-item input {
-    display: block;
+    box-sizing: border-box;
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #7d05b1;
-    color: white;
+    padding: 1vh;
     font-family: 'gta';
+    margin-bottom: 1vh;
+    border: none;
+    border-radius: 0px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 2vh;
+    outline: none;
 }
 
 .setting-item button {
-    background-color: #7d05b1;
+    width: 49%;
+    height: 5vh;
     color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-width: 0;
     font-family: 'gta-bold';
-    cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 2.2vh;
+    font-weight: 400;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    transition: .3s ease-in-out;
+}
+
+/* Hover effect */
+.setting-item button:hover {
+    background-color: #7d05b1;
+}
+
+/* Bordo superiore animato */
+.setting-item button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0.3vh;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+    z-index: 1;
+}
+
+/* Espansione bordo su hover */
+.setting-item button:hover::before {
     width: 100%;
 }
 
-.setting-item button:hover {
-    background-color: #9a2fd6;
-}
-
 .stats-grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1vh;
 }
 
 .stat-item {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1.5vh;
     text-align: center;
-    border: 1px solid #333;
-    border-radius: 5px;
 }
 
 .stat-value {
     display: block;
     font-family: 'gta-bold';
-    font-size: 2rem;
+    font-size: 2.5vh;
     color: #f1c40f;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5vh;
 }
 
 .stat-label {
-    font-size: 1rem;
+    font-size: 1.8vh;
     color: #ccc;
 }
 
 .logout-section {
-    text-align: right;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #7d05b1;
+    width: 100%;
+    text-align: left;
+    margin-top: 2vh;
+    padding-top: 2vh;
 }
 
 .logout-section button {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.7);
     color: #ff5555;
-    border: 1px solid #ff5555;
-    padding: 0.8rem 2rem;
+    border: none;
+    padding: 1vh 2vw;
     font-family: 'gta-bold';
+    font-size: 2.2vh;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
 }
 
+/* Bordo superiore animato */
+.logout-section button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0.3vh;
+    background-color: #ff5555;
+    transition: width 0.3s ease-in-out;
+    z-index: 1;
+}
+
+/* Hover effect */
 .logout-section button:hover {
     background-color: #ff5555;
     color: white;
+}
+
+/* Espansione bordo su hover */
+.logout-section button:hover::before {
+    width: 100%;
+}
+
+/* Media Queries per schermi più piccoli */
+@media screen and (max-width: 768px) {
+    .account-header h1 {
+        font-size: 4vh;
+    }
+
+    .account-section h2 {
+        font-size: 3.5vh;
+    }
+
+    .setting-item h3 {
+        font-size: 3.2vh;
+    }
+
+    .setting-item button {
+        width: 100%;
+        font-size: 3vh;
+    }
+
+    .logout-section button {
+        width: 100%;
+        font-size: 3vh;
+    }
+    
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
 }

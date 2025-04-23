@@ -49,18 +49,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // Animazione per gli input
-    const inputs = document.querySelectorAll('.setting-item input');
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.style.borderColor = '#7d05b1';
-            input.style.boxShadow = '0 0 5px rgba(125, 5, 177, 0.5)';
-        });
-
-        input.addEventListener('blur', () => {
-            input.style.borderColor = '#7d05b1';
-            input.style.boxShadow = 'none';
-        });
-    });
 });

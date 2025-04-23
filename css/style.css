@@ -21,6 +21,10 @@ body {
     position: relative; /* Necessario per posizionare l'overlay */
 }
 
+html, body {
+    overflow: hidden;
+  }
+
 /* Opzionale, per migliorare la visibilità del logo o altri contenuti */
 #logo {
     width: 8vw;
@@ -60,7 +64,14 @@ body {
     display: flex;
     flex-direction: row;
     flex-flow: row;
-    align-items: baseline;
+    align-items: center;
+}
+
+#navbar-button-user{
+    margin-left: 1vw;
+    max-width: fit-content;
+    min-width: 2.25vw;
+    height: 4vh;
 }
 
 .navbar-button {
@@ -117,14 +128,32 @@ body {
     z-index: 1;                /* Assicura che il bordo stia sopra il bottone */
 }
 
-#navbar-button-user{
-    margin-left: 1vw;
+.navbar-user-area{
+    margin-left: auto;
+    margin-right: 2vw;
     max-width: fit-content;
-    min-width: 2.25vw;
-    height: 4vh;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-flow: row;
 }
+
+.fish-info{
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+}
+
+.fish-info svg{
+    margin-left: 10%;
+}
+
+
+
+
 
 .fish-info{
     font-family: "gta-bold";
     font-size: 30pt;
+    color: white;
 }
