@@ -10,6 +10,10 @@
          url('../resources/fonts/gta-bold.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
+:root{
+    --navbar-height: 5.5vh;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -27,7 +31,7 @@ html, body {
 
 /* Opzionale, per migliorare la visibilità del logo o altri contenuti */
 #logo {
-    width: 8vw;
+    height: var(--navbar-height);
     margin: 0;
     margin-right: 1vw;
 }

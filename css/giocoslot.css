@@ -1,3 +1,5 @@
+@import url(/css/style.css);
+
 @font-face {
     font-family: 'gta';
     src: url('../resources/fonts/gta.woff') format('woff'),
@@ -18,13 +20,21 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+
     position: relative;
     overflow: hidden;
 }
 
 html, body {
     overflow: hidden;
+    height: 100%;
+}
+
+#wallpaper{
+    position: absolute;
+    z-index: -10;
+    width: auto;
+    height: 100vh;
 }
 
 /* Layout Principale */
@@ -36,6 +46,14 @@ html, body {
     margin: 0 auto;
 }
 
+.page-content{
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .contenitore-gioco {
     flex: 1;
     max-width: 600px;
@@ -44,6 +62,7 @@ html, body {
     padding: 30px;
     backdrop-filter: blur(5px);
     text-align: center;
+    
 }
 
 h1 {
