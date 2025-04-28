@@ -12,6 +12,11 @@
          url('../resources/fonts/gta-bold.ttf') format('truetype');
 }
 
+:root{
+    --slot-height: 12vh;
+    --slot-container-padding: 60px;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -55,12 +60,16 @@ html, body {
 }
 
 .contenitore-gioco {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex: 1;
-    max-width: 600px;
+    max-width: 50vw;
     margin-right: 30px;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 30px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     text-align: center;
     
 }
@@ -73,29 +82,31 @@ h1 {
 }
 
 .slot-machine {
+    width: fit-content;
     display: flex;
     justify-content: center;
     margin: 30px 0;
-    background-color: rgba(15, 52, 96, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    background-color: rgba(68, 249, 255, 0.8);
+    border: 5px solid rgb(79, 79, 79);
+    padding: var(--slot-container-padding);
+    border-radius: calc((var(--slot-height) + var(--slot-container-padding) * 2)/8);
     position: relative;
 }
 
 .slot {
-    width: 100px;
-    height: 100px;
+    width: var(--slot-height);
+    height: var(--slot-height);
     background-color: white;
     margin: 0 10px;
-    border-radius: 8px;
+    border-radius: calc((var(--slot-height) + var(--slot-container-padding) * 2)/18);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 50px;
     color: #333;
     font-family: 'gta-bold', sans-serif;
-    border: 3px solid #ffe600;
-    box-shadow: 0 0 15px #ffe600, inset 0 0 10px rgba(0,0,0,0.3);
+    border: 3px solid #003bc6;
+    box-shadow: 0 0 15px #006a48, inset 0 0 10px rgba(0,0,0,0.3);
     position: relative;
     overflow: hidden;
 }
@@ -123,6 +134,7 @@ h1 {
 }
 
 .controlli {
+    width: fit-content;
     margin-top: 20px;
 }
 
@@ -145,13 +157,11 @@ h1 {
     margin: 0 10px;
     font-family: 'gta-bold';
     transition: all 0.3s;
-    box-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
 .pulsante-puntata:hover {
     background-color: #c0392b;
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
 .puntata-corrente {
@@ -175,13 +185,11 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: 'gta-bold';
-    box-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
 .pulsante-gira:hover {
     background-color: #9906e4;
     transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
 .pulsante-gira:disabled {
@@ -226,8 +234,8 @@ h1 {
 }
 
 @keyframes gira {
-    0% { transform: translateY(-50%); }
-    100% { transform: translateY(50%); }
+    0% { transform: translateY(calc((var(--slot-height) + var(--slot-container-padding) * 2) / -2 + var(--slot-height) / 2)); }
+    100% { transform: translateY(calc((var(--slot-height) + var(--slot-container-padding) * 2) / 2 - var(--slot-height) / 2)); }
 }
 
 .girando {

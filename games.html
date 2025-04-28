@@ -5,59 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Diamond Casino</title>
-
     <link rel="stylesheet" href="css/games.css">
-    <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
     <div class="row-container" id="header-container">
         <img src="resources/images/logo.png" alt="" id="logo">
-
         <div id="navbar"></div>
     </div>
     <div class="section-1">
-            <img src="https://picsum.photos/960/540" alt="" id="game-thumbnail">
+        <a href="slot.html"><img src="resources/images/diamond-strike-tile.jpg" alt="" class="thumbnail"></a>
+        <a href="blackjack.html"><img src="resources/images/blackjack.png" alt="" class="thumbnail"></a>
     </div>
-    <div>
-        <a href="slot.html"><img src="https://picsum.photos/960/540" alt=""></a>
-    </div>
-
-
 
     <div id="gradient-box"></div>
 
     <script src="js/navabar.js"></script>
     <script>
-        const img = document.getElementById("game-thumbnail");
-
-        // Genera un offset casuale di partenza
-        const randomOffsetX = Math.random() * 40 - 20; // tra -20 e 20 gradi
-        const randomOffsetY = Math.random() * 40 - 20; // tra -20 e 20 gradi
-
-        // Imposta la rotazione iniziale dell'immagine con l'offset casuale
-        img.style.transform = `rotateX(${randomOffsetX}deg) rotateY(${randomOffsetY}deg)`;
-
-        // Aggiungi l'evento per il movimento del mouse
-        document.addEventListener("mousemove", (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-
-        // Calcola la differenza tra il mouse e il centro della finestra
-        const deltaX = (x - centerX) / centerX;
-        const deltaY = (y - centerY) / centerY;
-
-        // Applica l'offset random e ruota l'immagine verso il cursore
-        const rotateY = deltaX * 2;  // La rotazione sull'asse Y
-        const rotateX = deltaY * 2;  // La rotazione sull'asse X
-
-        // Modifica la trasformazione dell'immagine per seguire il mouse
-        img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const thumbnails = document.getElementsByClassName("thumbnail");
+    
+        // Aggiungi prospettiva al container genitore
+        document.querySelector('.section-1').style.perspective = '1200px';
+        document.querySelector('.section-1').style.transformStyle = 'preserve-3d';
+    
+        Array.from(thumbnails).forEach((img) => {
+            // Offset casuale iniziale più piccolo
+            const randomOffsetX = Math.random() * 3 - 1.5;  // ±1.5°
+            const randomOffsetY = Math.random() * 3 - 1.5;  // ±1.5°
+            img.style.transform = `rotateX(${randomOffsetX}deg) rotateY(${randomOffsetY}deg)`;
+            img.style.transition = "transform 0.3s cubic-bezier(0.17, 0.67, 0.21, 0.99)";
+            img.style.transformStyle = "preserve-3d";
+            img.style.willChange = "transform"; // Ottimizzazione performance
+    
+            // Parametri di prospettiva
+            const PERSPECTIVE_FACTOR = 0.2; // Quanto "affonda" l'immagine
+            const MAX_X_ROTATION = 8;  // Massima inclinazione verticale
+            const MAX_Y_ROTATION = 12; // Massima inclinazione orizzontale
+            const DEPTH_EFFECT = 15;   // Effetto di profondità (traslazione Z)
+    
+            img.addEventListener('mousemove', (e) => {
+                const rect = img.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                // Coordinate normalizzate (-1 a 1) rispetto al centro dell'immagine
+                const normX = (e.clientX - centerX) / (rect.width / 2);
+                const normY = (e.clientY - centerY) / (rect.height / 2);
+                
+                // Calcola le rotazioni con limiti e prospettiva
+                const rotateY = normX * MAX_Y_ROTATION;
+                const rotateX = -normY * MAX_X_ROTATION;
+                
+                // Effetto di profondità (l'immagine si avvicina/allontana leggermente)
+                const translateZ = Math.abs(normX + normY) * DEPTH_EFFECT;
+                
+                // Calcola la prospettiva dinamica
+                const perspective = 1200 + (normY * 200);
+                
+                // Applica la trasformazione con prospettiva più realistica
+                img.style.transform = `
+                    perspective(${perspective}px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateZ(${translateZ}px)
+                `;
+                
+                // Aggiunge un'ombra dinamica per enfatizzare la profondità
+                img.style.boxShadow = `
+                    ${-rotateY/2}px ${rotateX/2}px 15px rgba(0,0,0,${0.2 + Math.abs(normX+normY)/10})
+                `;
+            });
+    
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = `
+                    perspective(1200px)
+                    rotateX(${randomOffsetX}deg)
+                    rotateY(${randomOffsetY}deg)
+                    translateZ(0)
+                `;
+                img.style.boxShadow = 'none';
+            });
         });
-
     </script>
 </body>
 </html>

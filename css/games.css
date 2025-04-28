@@ -1,7 +1,15 @@
+@import url(style.css);
+
 td{
     width: 10vw;
     height: 10vh;
     background-color: aqua;
+}
+
+.thumbnail{
+    height: 30vh;
+    margin-right: 5vw;
+    margin-left: 5vw;
 }
 
 .section-1{
@@ -10,7 +18,7 @@ td{
     justify-content: center;
 
     width: 100vw;
-    height: 60vh;
+    height: calc(100vh - var(--navbar-height));
 
     perspective: 1000px;
 }

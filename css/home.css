@@ -1,3 +1,5 @@
+@import url(style.css);
+
 /* Overlay nero che copre tutta la pagina */
 body::before {
     content: '';
@@ -9,7 +11,27 @@ body::before {
     background-color: black; /* Schermo nero iniziale */
     animation: fadeOut 3s ease-in-out forwards; /* Animazione del fade-out */
     z-index: 1000; /* Assicurati che stia sopra al contenuto */
-    pointer-events: none; /* Impedisce all'overlay di intercettare eventi del mouse */
+    pointer-events: none; /* Impedisce all'overlay di intercettare eventi del mouse */  
+}
+
+body{
+    font-family: 'gta';
+    color: white;
+}
+
+h1{
+    font-size: 70pt;
+    margin: 10pt;
+}
+
+h2{
+    font-size: 36pt;
+    margin: 10pt;
+}
+
+p{
+    font-size: 18pt;
+    margin: 10pt;
 }
 
 /* Animazione per fare sparire il nero */
@@ -23,4 +45,19 @@ body::before {
 }
 
 
+.section-1{
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: .87vw;
+    margin-bottom: 1.2vh;
+}
+
+.text-container{
+    margin-bottom: 10vh;
+    width: 35vw;
+}
 

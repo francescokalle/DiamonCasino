@@ -1,0 +1,258 @@
+@import url(style.css);
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: rgba(0, 0, 0, 0.7);
+    --accent-color: #e74c3c;
+    --text-color: #ecf0f1;
+    --card-color: #ffffff;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: url(../resources/images/blackjack-wallpaper.png);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.game{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+
+}
+
+.game-card{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: fit-content;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.fish-display {
+    background-color: var(--secondary-color);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.fish-icon {
+    color: gold;
+    margin-right: 10px;
+}
+
+.player-area, .dealer-area {
+    margin-bottom: 30px;
+}
+
+.area-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score {
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 120px;
+}
+
+.card {
+    width: 80px;
+    height: 120px;
+    background-color: var(--card-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card.red {
+    color: var(--danger-color);
+}
+
+.card.black {
+    color: var(--secondary-color);
+    backdrop-filter: blur(10px);
+}
+
+.card-back {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--danger-color),
+        var(--danger-color) 10px,
+        var(--secondary-color) 10px,
+        var(--secondary-color) 20px
+    );
+    color: transparent;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.game button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.game button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.game button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hit-btn {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.stand-btn {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.bet-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.new-game-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--text-color);
+}
+
+.bet-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.bet-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.message.show {
+    opacity: 1;
+}
+
+.win {
+    background-color: rgba(46, 204, 113, 0.2);
+    border: 1px solid var(--success-color);
+}
+
+.lose {
+    background-color: rgba(231, 76, 60, 0.2);
+    border: 1px solid var(--danger-color);
+}
+
+.draw {
+    background-color: rgba(243, 156, 18, 0.2);
+    border: 1px solid var(--warning-color);
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 60px;
+        height: 90px;
+        font-size: 1.2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+    }
+}

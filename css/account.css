@@ -1,4 +1,15 @@
+@import url(style.css);
+
 /* Stili specifici per la pagina account - Non modificano gli stili esistenti */
+
+.section-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+}
 
 .account-container {
     width: 90vw;

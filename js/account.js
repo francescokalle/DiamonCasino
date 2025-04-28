@@ -1,16 +1,29 @@
 // Carica i dati dell'utente al caricamento della pagina
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('php/check_session.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.loggedIn) {
-                // Aggiorna il saldo fish
-                document.getElementById('user-fish').textContent = data.fish;
-            } else {
-                // Se non loggato, reindirizza al login
-                window.location.href = 'login.html';
+    var resetFishButton = document.getElementById("reset-fish");
+
+    async function setFish(fish) {
+        await fetch('/php/set_fish.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'fish=' + encodeURIComponent(fish)
+        });
+    }
+
+    // Gestione reset fish
+    if (resetFishButton) {
+        resetFishButton.addEventListener('click', async () => {
+            try {
+                await setFish(500); // Chiamata asincrona per impostare il fish a 500
+                window.location.reload(); // Ricarica la pagina dopo il completamento
+            } catch (error) {
+                console.error('Errore durante il reset del fish:', error);
+                alert('Si è verificato un errore durante il reset del fish');
             }
         });
+    }
 
     // Gestione cambio password
     const passwordForm = document.getElementById('change-password-form');
