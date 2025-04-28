@@ -20,17 +20,17 @@ body{
 }
 
 h1{
-    font-size: 70pt;
+    font-size: 7vh;
     margin: 10pt;
 }
 
 h2{
-    font-size: 36pt;
+    font-size: 4vh;
     margin: 10pt;
 }
 
 p{
-    font-size: 18pt;
+    font-size: 2vh;
     margin: 10pt;
 }
 
