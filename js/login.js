@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let confirmPasswordInput = null;
 
-    // 🔍 Controlla se l'utente esiste
+    // Controlla se l'utente esiste
     const checkUserExists = async (username) => {
         const response = await fetch('php/check_user.php', {
             method: 'POST',
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return await response.json();
     };
 
-    // 🆕 Registra un nuovo utente
+    // Registra un nuovo utente
     const registerUser = async (username, password) => {
         const userExists = await checkUserExists(username);
         
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 🔐 Login effettivo
+    // Login effettivo
     const loginUser = async (username, password) => {
         const response = await fetch('php/login_user.php', {
             method: 'POST',
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 👇 Click su "Registrati"
+    // Click su "Registrati"
     registerBtn.addEventListener('click', async () => {
         const username = usernameInput.value.trim();
         const password = passwordInput.value;
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await registerUser(username, password); // Aggiungi controllo prima di registrare
     });
 
-    // 👇 Click su "Accedi"
+    // Click su "Accedi"
     loginBtn.addEventListener('click', async (e) => {
         e.preventDefault();  // Previene submit di default
         const username = usernameInput.value.trim();
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await loginUser(username, password);
     });
 
-    // 👁‍🗨 Monitoraggio dell'input username
+    // Monitoraggio dell'input username
     usernameInput.addEventListener('input', async () => {
         const username = usernameInput.value.trim();
 
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 🎯 UI: solo login
+    // UI: solo login
     const showLoginUI = () => {
         registerBtn.style.display = 'none';
         loginBtn.style.display = 'inline-block';
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 🎯 UI: solo registrazione
+    // UI: solo registrazione
     const showRegisterUI = () => {
         registerBtn.style.display = 'inline-block';
         loginBtn.style.display = 'none';
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 🕳 Nasconde tutto
+    // Nasconde tutto
     const hideAllUI = () => {
         registerBtn.style.display = 'none';
         loginBtn.style.display = 'none';

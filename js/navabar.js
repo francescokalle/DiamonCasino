@@ -152,11 +152,6 @@ fetch('../prefab/navbar.html')
         attivaBottoneAttuale('games');
         location.href = "../games.html";
       });
-
-      buttonMarket.addEventListener('click', () => {
-        attivaBottoneAttuale('market');
-        location.href = "../market.html";
-      });
     });
   })
   .catch(error => {
